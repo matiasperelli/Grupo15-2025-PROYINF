@@ -8,9 +8,7 @@ Este es el repositorio del *Grupo 15*, cuyos integrantes son:
 * Matias Antonio Perelli Parra - Rol 202230525-8
 * **Tutor**: Nombre Tutor
 
-## Videos
-
-> Reemplazar con los enlaces correspondientes
+## Video
 
 * [Video presentación cliente](https://aula.usm.cl/mod/resource/view.php?id=6926137)
 
