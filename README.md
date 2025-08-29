@@ -14,6 +14,8 @@ Este es el repositorio del *Grupo 15*, cuyos integrantes son:
 
 * [Video presentación cliente](https://aula.usm.cl/mod/resource/view.php?id=6926137)
 
+##Wiki
+
 ## Diagrama de dominio
 
 > Diagrama de dominio del sistema.
