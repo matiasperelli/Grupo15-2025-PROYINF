@@ -8,19 +8,11 @@ Este es el repositorio del *Grupo 15*, cuyos integrantes son:
 * Matias Antonio Perelli Parra - Rol 202230525-8
 * **Tutor**: Nombre Tutor
 
-## Wiki
-
-> Obtener enlace desde el home de la wiki del repo.
-
-Puede acceder a la Wiki mediante el siguiente [enlace](https://gitlab.inf.utfsm.cl/)
-
 ## Videos
 
 > Reemplazar con los enlaces correspondientes
 
 * [Video presentación cliente](https://aula.usm.cl/mod/resource/view.php?id=6926137)
-* [Video presentación avance 1](https://www.youtube.com/)
-* Etc ...
 
 ## Diagrama de dominio
 
