@@ -4,7 +4,7 @@ Este es el repositorio del *Grupo 15*, cuyos integrantes son:
 
 * Benjamin Alberto Cerda Reyes - Rol 202230519-3
 * Jean Paul Alexandre Vergara - Rol 202230562-2
-* Vicente Jesús Beiza Silva - Rol 202230516-9 
+* Vicente Jesús Beiza Silva - Rol 202230516-9 
 * Matias Antonio Perelli Parra - Rol 202230525-8
 * **Tutor**: Nombre Tutor
 
@@ -21,6 +21,16 @@ Puede acceder a la Wiki mediante el siguiente [enlace](https://gitlab.inf.utfsm.
 * [Video presentación cliente](https://www.youtube.com)
 * [Video presentación avance 1](https://www.youtube.com/)
 * Etc ...
+
+## Diagrama de dominio
+
+> Diagrama de dominio del sistema.
+
+![Diagrama de Dominio](img/DiagramaDeDominio.jpeg)
+
+> *Si deseas controlar el tamaño en GitLab/GitHub, puedes usar HTML:*
+>
+> <img src="docs/img/DiagramaDeDominio.jpeg" alt="Diagrama de Dominio" width="900"/>
 
 ## Aspectos técnicos relevantes
 
