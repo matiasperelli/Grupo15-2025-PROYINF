@@ -28,9 +28,6 @@ Puede acceder a la Wiki mediante el siguiente [enlace](https://gitlab.inf.utfsm.
 
 ![Diagrama de Dominio](img/DiagramaDeDominio.jpeg)
 
-> *Si deseas controlar el tamaño en GitLab/GitHub, puedes usar HTML:*
->
-> <img src="docs/img/DiagramaDeDominio.jpeg" alt="Diagrama de Dominio" width="900"/>
 
 ## Aspectos técnicos relevantes
 
