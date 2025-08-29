@@ -12,15 +12,6 @@ Este es el repositorio del *Grupo 15*, cuyos integrantes son:
 
 * [Video presentación cliente](https://aula.usm.cl/mod/resource/view.php?id=6926137)
 
-##Wiki
 
-## Diagrama de dominio
+## Wiki
 
-> Diagrama de dominio del sistema.
-
-![Diagrama de Dominio](https://raw.githubusercontent.com/matiasperelli/GrupoSoftsy-2025-PROYINF/main/img/DiagramaDeDominio.jpeg)
-
-
-## Aspectos técnicos relevantes
-
-_Todo aspecto relevante cuando para poder usar el proyecto o consideraciones del proyecto base a ser entregado_
