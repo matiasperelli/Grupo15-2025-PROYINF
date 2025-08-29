@@ -26,7 +26,7 @@ Puede acceder a la Wiki mediante el siguiente [enlace](https://gitlab.inf.utfsm.
 
 > Diagrama de dominio del sistema.
 
-![Diagrama de Dominio](img/DiagramaDeDominio.jpeg)
+![Diagrama de Dominio](https://raw.githubusercontent.com/matiasperelli/GrupoSoftsy-2025-PROYINF/main/img/DiagramaDeDominio.jpeg)
 
 
 ## Aspectos técnicos relevantes
