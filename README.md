@@ -15,3 +15,5 @@ Este es el repositorio del *Grupo 15*, cuyos integrantes son:
 
 ## Wiki
 
+Puedes acceder a la Wiki completa desde este [enlace](https://github.com/matiasperelli/GrupoSoftsy-2025-PROYINF/wiki).
+
