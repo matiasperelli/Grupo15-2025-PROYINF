@@ -6,7 +6,6 @@ Este es el repositorio del *Grupo 15*, cuyos integrantes son:
 * Jean Paul Alexandre Vergara - Rol 202230562-2
 * Vicente Jesús Beiza Silva - Rol 202230516-9 
 * Matias Antonio Perelli Parra - Rol 202230525-8
-* **Tutor**: Ignacio Muñoz
 
 ## Video
 
