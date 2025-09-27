@@ -1,0 +1,18 @@
+[
+  {
+    "id_solicitud": "S001",
+    "id_cliente": "C001",
+    "puntaje": 720,
+    "decision": "Aprobado",
+    "motivos": ["Historial crediticio positivo", "Ingresos suficientes"],
+    "fecha_evaluacion": "2025-09-23T15:30:00"
+  },
+  {
+    "id_solicitud": "S002",
+    "id_cliente": "C002",
+    "puntaje": 480,
+    "decision": "Rechazado",
+    "motivos": ["Deuda excesiva", "Ingresos insuficientes"],
+    "fecha_evaluacion": "2025-09-23T15:35:00"
+  }
+]
