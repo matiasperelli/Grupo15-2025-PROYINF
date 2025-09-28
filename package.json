@@ -1,0 +1,20 @@
+{
+  "name": "grupo15-proyinf",
+  "version": "1.0.0",
+  "description": "Proyecto de análisis y diseño de software",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "nodemon": "^3.1.0"
+  }
+}
