@@ -14,6 +14,10 @@ El proyecto consiste en el diseño e implementación de un sistema digital para 
 
 ---
 
+## Wiki
+
+Puedes acceder a la Wiki completa desde este [enlace](https://github.com/matiasperelli/GrupoSoftsy-2025-PROYINF/wiki).
+
 ## Contexto del Proyecto
 
 La institución financiera presenta un proceso de préstamos lento y manual, con tiempos de aprobación de hasta una semana.  
@@ -143,6 +147,3 @@ docker compose down -v
 
 * [Video presentación cliente](https://aula.usm.cl/mod/resource/view.php?id=6926137)
 
-## Wiki
-
-Puedes acceder a la Wiki completa desde este [enlace](https://github.com/matiasperelli/GrupoSoftsy-2025-PROYINF/wiki).
