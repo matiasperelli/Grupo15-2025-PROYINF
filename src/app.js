@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const simulacionRoutes = require("./routes/simulacion");
+const simulacionRoutes = require("./simulacion"); // 👈 cambia esta línea
 
 app.use(express.json());
 app.use("/api", simulacionRoutes);
