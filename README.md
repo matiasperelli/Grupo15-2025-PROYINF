@@ -70,6 +70,8 @@ Además, se incorporaron las siguientes mejoras:
 - Documentación técnica ampliada en este README.
 
 ---
+## Video Prototipo Hito3
+[![Video Hito3]()]( https://youtu.be/2Q4vW22-GCc?si=dOge9aorHjx9rV6C)
 
 ## Estructura del Código
 ```
