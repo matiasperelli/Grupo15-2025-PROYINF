@@ -145,5 +145,5 @@ docker compose down -v
 
 ## Video prototipo sistema (Interfaz)
 
-* [Video presentación cliente](https://aula.usm.cl/mod/resource/view.php?id=6926137)
+* [Video prototipo sistema (interfaz)](https://youtu.be/2Q4vW22-GCc?si=sNTpJr3fnx4untbg)
 
