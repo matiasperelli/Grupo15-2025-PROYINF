@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Préstamos Digitales - Grupo 15</title>
+
+<style>
+/* ------------------------------
+   Sistema de diseño (Fintech UI)
+---------------------------------*/
+:root{
+  /* Paleta */
+  --primary: #0d5ef4;
+  --primary-600:#0b4dcc;
+  --primary-700:#0a43b3;
+  --ink:#111317;
+  --muted:#5b6574;
+  --bg:#f6f8fb;
+  --surface:#ffffff;
+  --success:#1fbf75;
+  --danger:#ef4444;
+  --warning:#f59e0b;
+  --accent:#00d4ff;       /* toque fintech/cyano */
+  --gold:#f3b500;
+
+  /* UI */
+  --radius:14px;
+  --shadow-sm:0 4px 10px rgba(13, 30, 62, .08);
+  --shadow-md:0 10px 25px rgba(13, 30, 62, .12);
+  --ring: 0 0 0 4px rgba(13,94,244,.12);
+  --transition: all .25s ease;
+
+  /* Tipografía */
+  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}
+
+/* Reset mínimo y base */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+}
+body{
+  font-family:var(--font);
+  color:var(--ink);
+  background: radial-gradient(1200px 600px at 120% -10%, #e8f1ff 0%, transparent 60%) ,
+              radial-gradient(900px 500px at -10% -10%, #e7fff7 0%, transparent 60%) ,
+              var(--bg);
+  line-height:1.6;
+}
+.container{max-width:1200px;margin:auto;padding:0 20px}
+section{padding:72px 0}
+.section-title{ text-align:center; margin-bottom:36px }
+.section-title h2{font-size:clamp(1.6rem,2.2vw,2.1rem); color:var(--primary); letter-spacing:.3px}
+.section-title p{color:var(--muted); max-width:740px; margin:.5rem auto 0}
+
+/* --------------------------------
+   Header sticky "glass"
+-----------------------------------*/
+header{
+  position:sticky; top:0; z-index:1000;
+  backdrop-filter: saturate(140%) blur(8px);
+  background: rgba(255,255,255,.7);
+  border-bottom:1px solid rgba(13,30,62,.06);
+}
+.header-content{
+  display:flex; align-items:center; justify-content:space-between; padding:14px 0;
+}
+.logo{
+  font-weight:800; letter-spacing:.3px;
+  color:var(--primary);
+  display:flex; align-items:center; gap:.6rem;
+}
+.logo .mark{
+  width:32px;height:32px; border-radius:10px;
+  background: conic-gradient(from 140deg, var(--primary) 0 40%, var(--accent) 40% 65%, var(--gold) 65% 100%);
+  box-shadow: var(--shadow-sm);
+}
+nav ul{list-style:none; display:flex; gap:18px; align-items:center}
+nav a{
+  text-decoration:none; color:#1b2230; font-weight:600; font-size:.98rem; padding:8px 10px; border-radius:10px;
+  transition:var(--transition);
+}
+nav a:hover{ color:var(--primary); background:rgba(13,94,244,.08) }
+.cta{
+  background:linear-gradient(135deg, var(--primary), var(--primary-600));
+  color:#fff; padding:10px 16px; border-radius:12px; text-decoration:none; font-weight:700;
+  box-shadow:var(--shadow-sm);
+}
+.cta:hover{ transform:translateY(-2px); box-shadow:var(--shadow-md) }
+
+/* --------------------------------
+   Hero con patrón financiero
+-----------------------------------*/
+.hero{
+  position:relative; overflow:hidden; color:#fff;
+  background:
+    radial-gradient(1200px 500px at 120% 10%, rgba(0,212,255,.25) 0%, transparent 60%),
+    linear-gradient(135deg, var(--primary) 0%, var(--primary-700) 100%);
+  padding:96px 0 88px;
+  text-align:center;
+}
+.hero:before{
+  /* patrón líneas ascendentes estilo gráfico */
+  content:""; position:absolute; inset:0; opacity:.16; pointer-events:none;
+  background-image:
+    linear-gradient( to right, rgba(255,255,255,.12) 1px, transparent 1px),
+    linear-gradient( to top, rgba(255,255,255,.08) 1px, transparent 1px);
+  background-size: 36px 36px, 36px 36px;
+}
+.hero h1{ font-size:clamp(2rem,4vw,3rem); font-weight:900; letter-spacing:.2px }
+.hero p{ max-width:820px; margin:14px auto 28px; font-size:1.08rem; opacity:.92 }
+.btn{
+  display:inline-block; border:0; cursor:pointer; text-decoration:none;
+  padding:12px 20px; border-radius:12px; font-weight:800; letter-spacing:.2px;
+  transition:var(--transition); box-shadow:var(--shadow-sm);
+}
+.btn:hover{ transform:translateY(-2px); box-shadow:var(--shadow-md)}
+.btn-white{ background:#fff; color:var(--primary) }
+.btn-primary{ background:linear-gradient(135deg,var(--primary),var(--primary-600)); color:#fff }
+.hero-actions{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap }
+
+/* confianza */
+.trust-bar{ margin-top:28px; opacity:.9 }
+.badges{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center }
+.badge{
+  font-size:.78rem; font-weight:700; color:#244; background:rgba(255,255,255,.18);
+  border:1px solid rgba(255,255,255,.22); padding:6px 10px; border-radius:999px
+}
+
+/* --------------------------------
+   Tarjetas y formularios
+-----------------------------------*/
+.card{
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding:26px;
+  transition:var(--transition);
+  border:1px solid rgba(13,30,62,.06);
+}
+.card:hover{ transform:translateY(-3px) }
+
+.grid-2{
+  display:grid; gap:22px;
+}
+@media (min-width: 980px){
+  .grid-2{ grid-template-columns:1.1fr .9fr }
+}
+.form-group{ margin-bottom:18px }
+label{ font-weight:700; display:block; margin-bottom:8px }
+.input{
+  position:relative;
+}
+.input input, .input select{
+  width:100%; padding:13px 14px 13px 14px; border:1px solid #dfe3ea; border-radius:12px; font-size:1rem; outline:none;
+  background:#fff; transition:var(--transition);
+}
+.input input:focus, .input select:focus{ box-shadow:var(--ring); border-color:var(--primary) }
+.input .prefix{
+  position:absolute; left:10px; top:50%; transform:translateY(-50%); color:#7a8699; font-weight:700; font-size:.9rem
+}
+.input.has-prefix input{ padding-left:58px }
+.helper{ color:var(--muted); font-size:.9rem; margin-top:6px }
+
+/* resultados */
+.results{
+  background: #f1f5ff;
+  border:1px solid #e1e9ff;
+  border-radius:14px; padding:20px; margin-top:10px
+}
+.results h3{ color:#0a2b7a; margin-bottom:10px }
+.kpis{ display:grid; gap:14px; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); margin-top:12px }
+.kpi{
+  background:#fff; border:1px solid #e7ecf5; border-radius:12px; padding:14px 16px;
+}
+.kpi .label{ color:#51607a; font-size:.9rem }
+.kpi .value{ font-weight:900; font-size:1.2rem; margin-top:4px }
+.result-item{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 0; border-bottom:1px dashed #dfe3ea
+}
+.result-item:last-child{ border-bottom:0 }
+.result-label{ color:#334155; font-weight:600 }
+.result-value{ font-weight:900 }
+.status-approved{ color:var(--success) }
+.status-rejected{ color:var(--danger) }
+
+/* file upload */
+.file-upload{
+  border:2px dashed #dfe3ea; border-radius:14px; padding:24px; text-align:center;
+  transition:var(--transition); background:#fbfcff
+}
+.file-upload:hover{ border-color:var(--primary); background:#f4f8ff }
+.file-upload p{ color:#344054; font-weight:700; margin-bottom:6px }
+.file-upload small{ color:#var(--muted) }
+
+/* aviso */
+.notice{
+  background:#fff8e6; color:#7a5400; border:1px solid #ffe3a3; border-radius:12px; padding:14px; margin-top:14px
+}
+
+/* --------------------------------
+   Pasos del proceso
+-----------------------------------*/
+.steps{
+  margin-top:28px;
+  display:grid; gap:14px;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+}
+.step{
+  background:linear-gradient(180deg,#ffffff, #f7faff);
+  border:1px solid #e6ecff;
+  border-radius:14px; padding:18px;
+}
+.step .icon{
+  width:42px; height:42px; border-radius:12px;
+  display:grid; place-items:center; font-size:1.2rem; font-weight:900; color:#113;
+  background: radial-gradient(100% 100% at 0% 0%, #fff 0%, #eaf1ff 100%);
+  border:1px solid #dfe6ff;
+  margin-bottom:10px;
+}
+.step h4{ margin-bottom:6px; font-size:1rem }
+.step p{ color:var(--muted); font-size:.92rem }
+
+/* --------------------------------
+   Estado de solicitud
+-----------------------------------*/
+.status-card{ border-left:6px solid var(--danger); background: #fff3f3 }
+.status-card.approved{ border-left-color:var(--success); background:#f1fff7 }
+.status-header{ display:flex; align-items:center; justify-content:space-between; margin-bottom:12px }
+.status-title{ font-weight:900 }
+.progress{
+  margin-top:14px; background:#eef2ff; border-radius:999px; height:10px; overflow:hidden
+}
+.progress > span{
+  display:block; height:100%;
+  background:linear-gradient(90deg, var(--primary), var(--accent));
+  width:45%;  /* demo */
+}
+
+/* --------------------------------
+   Acerca + features
+-----------------------------------*/
+.about-content{ display:grid; gap:24px }
+@media (min-width: 900px){ .about-content{ grid-template-columns:1.1fr .9fr } }
+.about-text p{ margin-bottom:12px }
+.about-details ul{ margin:8px 0 18px 18px }
+.features{
+  margin-top:18px;
+  display:grid; gap:18px; grid-template-columns: repeat(auto-fit,minmax(210px,1fr))
+}
+.feature{
+  text-align:center; padding:18px;
+  border-radius:14px; border:1px solid #e8eef9; background:#fff
+}
+.feature-icon{ font-size:2rem; color:var(--primary); margin-bottom:8px }
+
+/* --------------------------------
+   Footer
+-----------------------------------*/
+footer{
+  background:linear-gradient(180deg,#0b1430,#0a1024);
+  color:#e6ebff; padding:44px 0 20px; margin-top:40px
+}
+.footer-content{
+  display:grid; gap:26px
+}
+@media (min-width: 900px){
+  .footer-content{ grid-template-columns: 2fr 1fr 1fr }
+}
+.footer-section h3{ color:#fff; margin-bottom:14px }
+.team-members{ list-style:none }
+.team-members li{ margin-bottom:6px }
+.footer-bottom{
+  text-align:center; border-top:1px solid rgba(255,255,255,.12); margin-top:20px; padding-top:16px; font-size:.92rem
+}
+.footer-bottom a{ color:#cfe2ff; text-decoration:none }
+.footer-bottom a:hover{ text-decoration:underline }
+
+/* Utilidades */
+.text-center{text-align:center}
+.currency{ color:var(--muted); font-size:.9rem; margin-left:6px }
+.cl-muted{ color:var(--muted) }
+</style>
+</head>
+
+<body>
+<!-- Header -->
+<header>
+  <div class="container">
+    <div class="header-content">
+      <div class="logo"><span class="mark" aria-hidden="true"></span> Préstamos Grupo 15</div>
+      <nav>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#simulacion">Simulación</a></li>
+          <li><a href="#solicitud">Solicitud</a></li>
+          <li><a href="#estado">Estado</a></li>
+          <li><a href="#acerca">Acerca</a></li>
+          <li><a class="cta" href="#solicitud">Solicitar ahora</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section id="inicio" class="hero">
+  <div class="container">
+    <h1>Préstamos de Consumo Digitales</h1>
+    <p>Proceso 100% online, rápido y transparente. Solicita tu préstamo en pesos chilenos (CLP) y conoce tu preaprobación en minutos.</p>
+    <div class="hero-actions">
+      <a href="#simulacion" class="btn btn-white">Simular Préstamo</a>
+      <!-- Botón de video eliminado -->
+    </div>
+
+    <!-- confianza -->
+    <div class="trust-bar">
+      <div class="badges">
+        <span class="badge">Autenticación segura</span>
+        <span class="badge">Encrypt AES-256</span>
+        <span class="badge">CAE transparente</span>
+        <span class="badge">Hecho en 🇨🇱 CLP</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Simulación (HU1 + HU4) -->
+<section id="simulacion">
+  <div class="container">
+    <div class="section-title">
+      <h2>Simula tu Préstamo</h2>
+      <p>Compara escenarios y condiciones para elegir lo que mejor se ajuste a ti. Todos los montos se expresan en pesos chilenos (CLP).</p>
+    </div>
+
+    <div class="card grid-2">
+      <!-- Form -->
+      <form id="simulation-form" class="form">
+        <div class="form-group">
+          <label for="monto">Monto Solicitado <span class="currency">(CLP)</span></label>
+          <div class="input has-prefix">
+            <span class="prefix">$</span>
+            <input type="number" id="monto" placeholder="Ej: 1.000.000" min="100000" max="10000000">
+          </div>
+          <div class="helper">Mín. $100.000 — Máx. $10.000.000</div>
+        </div>
+
+        <div class="form-group">
+          <label for="plazo">Plazo (meses)</label>
+          <div class="input">
+            <select id="plazo">
+              <option value="">Selecciona un plazo</option>
+              <option value="12">12 meses</option>
+              <option value="24">24 meses</option>
+              <option value="36">36 meses</option>
+              <option value="48">48 meses</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="ingresos">Ingresos Mensuales <span class="currency">(CLP)</span></label>
+          <div class="input has-prefix">
+            <span class="prefix">$</span>
+            <input type="number" id="ingresos" placeholder="Ej: 800.000" min="0">
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary">Simular y Evaluar</button>
+        <p class="helper">Evaluación referencial. Para una oferta, completa tu solicitud.</p>
+      </form>
+
+      <!-- Resultados de muestra (estático) -->
+      <div>
+        <div class="results">
+          <h3>Resultados de Simulación <span class="currency">(CLP)</span></h3>
+
+          <div class="result-item">
+            <span class="result-label">Cuota Mensual Estimada:</span>
+            <span class="result-value">$ 45.250</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">CAE (Carga Anual Equivalente):</span>
+            <span class="result-value">12,5%</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Costo Total del Crédito:</span>
+            <span class="result-value">$ 1.086.000</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Score de Evaluación:</span>
+            <span class="result-value">78/100</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Estado:</span>
+            <span class="result-value status-approved">Preaprobado</span>
+          </div>
+
+          <div class="kpis">
+            <div class="kpi">
+              <div class="label">Tasa referencial</div>
+              <div class="value">1,02% mensual</div>
+            </div>
+            <div class="kpi">
+              <div class="label">Relación cuota/ingreso</div>
+              <div class="value">28%</div>
+            </div>
+            <div class="kpi">
+              <div class="label">Tiempo estimado de respuesta</div>
+              <div class="value">⏱ 15 min</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="notice">
+          <strong>Nota:</strong> Demostración no funcional. Valores de ejemplo. Todos los montos en CLP.
+        </div>
+      </div>
+    </div>
+
+    <!-- Pasos del flujo -->
+    <div class="steps">
+      <div class="step">
+        <div class="icon">1</div>
+        <h4>Simula</h4>
+        <p>Explora montos y plazos para estimar tu cuota.</p>
+      </div>
+      <div class="step">
+        <div class="icon">2</div>
+        <h4>Solicita</h4>
+        <p>Completa tus datos y adjunta documentos.</p>
+      </div>
+      <div class="step">
+        <div class="icon">3</div>
+        <h4>Evalúa</h4>
+        <p>Validamos identidad y comportamiento financiero.</p>
+      </div>
+      <div class="step">
+        <div class="icon">4</div>
+        <h4>Desembolsa</h4>
+        <p>Firma digital y depósito en tu cuenta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Solicitud (HU2) -->
+<section id="solicitud">
+  <div class="container">
+    <div class="section-title">
+      <h2>Solicitud de Préstamo</h2>
+      <p>Completa tus datos personales para iniciar la solicitud. Montos en pesos chilenos (CLP).</p>
+    </div>
+
+    <div class="card">
+      <form id="application-form">
+        <div class="form-group">
+          <label for="nombre">Nombre Completo</label>
+          <div class="input"><input type="text" id="nombre" placeholder="Ej: Juan Pérez González"></div>
+        </div>
+        <div class="form-group">
+          <label for="rut">RUT</label>
+          <div class="input"><input type="text" id="rut" placeholder="Ej: 12.345.678-9"></div>
+        </div>
+        <div class="form-group">
+          <label for="email">Correo Electrónico</label>
+          <div class="input"><input type="email" id="email" placeholder="Ej: ejemplo@correo.com"></div>
+        </div>
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <div class="input"><input type="tel" id="telefono" placeholder="Ej: +56 9 1234 5678"></div>
+        </div>
+
+        <div class="form-group">
+          <label>Adjuntar Documentos</label>
+          <div class="file-upload">
+            <p>Arrastra tus documentos aquí o haz clic para seleccionar</p>
+            <small>PDF, JPG, PNG (Máx. 5MB por archivo)</small>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary" disabled>Enviar Solicitud</button>
+        <div class="notice"><strong>Nota:</strong> El envío se habilitará en la versión funcional.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Estado (HU3) -->
+<section id="estado">
+  <div class="container">
+    <div class="section-title">
+      <h2>Consulta el Estado de tu Solicitud</h2>
+      <p>Revisa el progreso y resultado de tu evaluación.</p>
+    </div>
+
+    <div class="card">
+      <form id="status-form">
+        <div class="form-group">
+          <label for="solicitud-id">ID de Solicitud</label>
+          <div class="input"><input type="text" id="solicitud-id" placeholder="Ej: SOL-2023-001234"></div>
+        </div>
+        <button type="button" class="btn btn-primary">Consultar Estado</button>
+      </form>
+
+      <!-- Ejemplo de estado -->
+      <div class="card status-card" style="margin-top:16px;">
+        <div class="status-header">
+          <div class="status-title">Solicitud #SOL-2023-001234</div>
+          <div class="result-value status-rejected">Rechazado</div>
+        </div>
+
+        <div class="result-item">
+          <span class="result-label">Motivo:</span>
+          <span class="result-value">Relación cuota/ingreso alta (CLP)</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Score:</span>
+          <span class="result-value">42/100</span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Fecha de evaluación:</span>
+          <span class="result-value">15/10/2023</span>
+        </div>
+
+        <!-- Barra de progreso visual (demo) -->
+        <div class="progress" aria-hidden="true"><span></span></div>
+        <p class="cl-muted" style="margin-top:8px">Progreso: Verificación de identidad ▸ Análisis de riesgo ▸ <strong>Decisión</strong> ▸ Desembolso</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Acerca -->
+<section id="acerca">
+  <div class="container">
+    <div class="section-title">
+      <h2>Acerca del Proyecto</h2>
+      <p>Transformación digital para préstamos de consumo más eficientes en pesos chilenos (CLP)</p>
+    </div>
+
+    <div class="about-content">
+      <div class="about-text">
+        <p>Este proyecto nace de la necesidad de una institución financiera tradicional que ha perdido competitividad en el mercado de préstamos de consumo. Su principal problema era la lentitud del proceso: tardaba cerca de una semana en aprobar un préstamo, mientras la competencia —ya digitalizada— lo hace en menos de 24 horas.</p>
+        <p>La empresa busca recuperar participación de mercado y mejorar rentabilidad a través de una transformación digital completa, automatizando el producto de préstamo de consumo.</p>
+        <p>El objetivo es permitir al cliente realizar todo en línea: desde la simulación hasta el pago de cuotas, sin atención presencial.</p>
+
+        <!-- FAQ sin JS -->
+        <div class="faq">
+          <details>
+            <summary>¿Cómo calculan la cuota estimada?</summary>
+            <p>Usamos el monto, plazo y una tasa referencial para proyectar una cuota aproximada (no vinculante).</p>
+          </details>
+          <details>
+            <summary>¿Qué es el CAE?</summary>
+            <p>El Costo Anual Equivalente resume el costo total del crédito en un solo porcentaje anual.</p>
+          </details>
+          <details>
+            <summary>¿Qué documentos necesito?</summary>
+            <p>Identificación vigente y comprobantes de ingresos. En algunos casos, información adicional.</p>
+          </details>
+        </div>
+      </div>
+
+      <div class="about-details">
+        <h3>Objetivos Clave</h3>
+        <ul>
+          <li>Reducir aprobación a &lt; 24 horas</li>
+          <li>Digitalizar el 100% del proceso (CLP)</li>
+          <li>Mejorar experiencia con autoatención</li>
+          <li>Optimizar KPIs y SLAs</li>
+        </ul>
+
+        <h3>Tecnologías Utilizadas</h3>
+        <p>Este prototipo utiliza HTML5 y CSS3. La versión funcional implementará:</p>
+        <ul>
+          <li>Frontend: React</li>
+          <li>Backend: Node.js + Express</li>
+          <li>Base de datos: PostgreSQL</li>
+          <li>Autenticación: Biometría facial y Clave Única</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">⚡</div>
+        <h3>Rápido</h3>
+        <p>Aprobación en menos de 24 horas frente a 1 semana del proceso tradicional</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📱</div>
+        <h3>Digital</h3>
+        <p>Proceso 100% online sin necesidad de atención presencial</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🔒</div>
+        <h3>Seguro</h3>
+        <p>Autenticación biométrica y firma digital avanzada</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🇨🇱</div>
+        <h3>En CLP</h3>
+        <p>Todos los montos expresados en pesos chilenos</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Préstamos Grupo 15</h3>
+        <p>Transformación digital para préstamos de consumo más eficientes, rápidos y accesibles en CLP.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Integrantes del Equipo</h3>
+        <ul class="team-members">
+          <li>Benjamin Cerda</li>
+          <li>Jean Alexandre</li>
+          <li>Matias Perelli</li>
+          <li>Vicente Beiza</li>
+        </ul>
+      </div>
+      <div class="footer-section">
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Préstamos Grupo 15. Todos los derechos reservados. Todos los montos en CLP.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
