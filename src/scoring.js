@@ -1,3 +1,4 @@
+// src/scoring.js
 function calcularScoring(monto, plazo, ingreso) {
   const tasaMensual = 0.015; // 1.5% mensual
   const cuota = (monto * tasaMensual) / (1 - Math.pow(1 + tasaMensual, -plazo));
