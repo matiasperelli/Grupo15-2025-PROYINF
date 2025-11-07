@@ -12,9 +12,6 @@ services:
       - DB_PORT=5432
     depends_on:
       - postgres_db
-    volumes:
-      - .:/app
-      - /app/node_modules
 
   postgres_db:
     image: postgres:15
