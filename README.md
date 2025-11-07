@@ -116,8 +116,8 @@ Si el score es mayor o igual a 60, el cliente queda Preaprobado; de lo contrario
 
 ### 2. Clonar el repositorio
 ```bash
-git clone https://github.com/matiasperelli/GrupoSoftsy-2025-PROYINF.git
-cd GrupoSoftsy-2025-PROYINF
+git clone https://github.com/matiasperelli/Grupo15-2025-PROYINF.git
+cd Grupo15-2025-PROYINF
 ```
 
 ### 3. Levantar los contenedores
