@@ -692,6 +692,60 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("simulation-form");
+  const button = form.querySelector("button");
+  const montoInput = document.getElementById("monto");
+  const plazoSelect = document.getElementById("plazo");
+  const ingresoInput = document.getElementById("ingresos");
+  const resultsContainer = document.querySelector(".results");
+
+  button.addEventListener("click", async () => {
+    const monto = parseFloat(montoInput.value);
+    const plazo = parseInt(plazoSelect.value);
+    const ingreso = parseFloat(ingresoInput.value);
+
+    if (!monto || !plazo || !ingreso) {
+      alert("Por favor completa todos los campos antes de simular.");
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/evaluar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ monto, plazo, ingreso })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        resultsContainer.innerHTML = `
+          <h3>Resultados de Simulación</h3>
+          <div class="result-item">
+            <span class="result-label">Cuota Mensual Estimada:</span>
+            <span class="result-value">$${Number(data.cuota).toLocaleString()}</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Score de Evaluación:</span>
+            <span class="result-value">${data.score}/100</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Estado:</span>
+            <span class="result-value ${data.estado === 'Preaprobado' ? 'status-approved' : 'status-rejected'}">${data.estado}</span>
+          </div>
+        `;
+      } else {
+        alert(data.error || "Error al evaluar el préstamo.");
+      }
+    } catch (error) {
+      console.error("Error de conexión:", error);
+      alert("No se pudo conectar con la API.");
+    }
+  });
+});
+</script>
 
 </body>
 </html>
