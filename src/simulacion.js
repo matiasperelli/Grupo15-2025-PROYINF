@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../db");
+const db = require("./db");
 const { calcularScoring } = require("../scoring");
 
 router.post("/evaluar", async (req, res) => {
@@ -26,3 +26,4 @@ router.post("/evaluar", async (req, res) => {
 });
 
 module.exports = router;
+
