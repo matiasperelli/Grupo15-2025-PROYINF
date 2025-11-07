@@ -1,3 +1,5 @@
+console.log("Ruta actual dentro del contenedor:", __dirname);
+
 const express = require("express");
 const router = express.Router();
 const db = require("./db");
@@ -26,5 +28,6 @@ router.post("/evaluar", async (req, res) => {
 });
 
 module.exports = router;
+
 
 
