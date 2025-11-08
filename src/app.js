@@ -67,15 +67,32 @@ app.post('/api/evaluar', async (req, res) => {
 
 app.get('/api/simulaciones', async (req, res) => {
   try {
+    // Garantiza que la tabla exista
+    await db.query(
+      `CREATE TABLE IF NOT EXISTS simulaciones(
+         id SERIAL PRIMARY KEY,
+         monto INT NOT NULL,
+         plazo INT NOT NULL,
+         ingreso INT NOT NULL,
+         score INT NOT NULL,
+         estado TEXT NOT NULL,
+         cuota NUMERIC(12,2) NOT NULL,
+         creado_en TIMESTAMP DEFAULT NOW()
+       )`
+    );
+
     const { rows } = await db.query(
       `SELECT id, monto, plazo, ingreso, score, estado, cuota, creado_en
-       FROM simulaciones ORDER BY creado_en DESC LIMIT 50`
+       FROM simulaciones
+       ORDER BY creado_en DESC
+       LIMIT 50`
     );
-    res.json(rows);
+    res.json(rows);             // [] si no hay registros
   } catch (e) {
     console.error(e);
     res.status(500).json({ error: 'Error al consultar simulaciones.' });
   }
 });
+
 
 module.exports = app;
