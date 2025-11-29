@@ -108,6 +108,27 @@ Si el score es mayor o igual a 60, el cliente queda Preaprobado; de lo contrario
 
 ---
 
+## Resumen General de las Mejoras Técnicas del Hito 5
+
+- Se implementó una nueva historia de usuario completa (HU6).
+
+- Se extendió la base de datos para soportar el estado “Desembolsado”.
+
+- Se incorporó un mock bancario totalmente funcional.
+
+- Se agregó un servicio, controlador y ruta REST nuevos para desembolso.
+
+- Se integró correctamente con HU5 (firma digital) y estados anteriores.
+
+- Se reorganizó el backend siguiendo buenas prácticas de arquitectura.
+
+- Se documentó el proceso con un nuevo diagrama de secuencia.
+
+- Se completó el ciclo de vida del préstamo digital hasta la entrega de fondos.
+
+
+---
+
 ## Instrucciones de Ejecución
 
 ### 1. Requisitos
