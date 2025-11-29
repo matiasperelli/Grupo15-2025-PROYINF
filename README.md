@@ -170,3 +170,7 @@ docker compose down -v
 
 * [Video prototipo sistema (interfaz)](https://youtu.be/2Q4vW22-GCc?si=sNTpJr3fnx4untbg)
 
+Como lo mencionamos en el apartado de la wiki, RESULTADOS FINALES.
+No pudimos realizar un front end apropiado, o funcional. Todo el back end. O la logica del sistema en si. Si pudimos completarla.
+Dado eso, el video prototipo del sistema es lo mas cercano a nuestro proyecto funcional en el ambito del Front end.
+
